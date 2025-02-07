@@ -1,12 +1,8 @@
 name: Output Info
-on:
-  issues:
-    types: [opened]
+on: issues
 jobs:
   info:
     runs-on: ubuntu-latest
     steps:
       - name: Output event details
-        run: |
-          gh issue --repo ${{ github.repository }} \
-          create --title "Issue title" --body "Issue body"
+        run: echo "${{ toJSON(github.event) }}"
